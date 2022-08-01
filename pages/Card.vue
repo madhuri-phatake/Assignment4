@@ -4,7 +4,7 @@
         <div class="flex items-center flex-shrink-0 text-white mr-6">
             <span class="font-semibold text-xl tracking-tight">Welcome!!</span>
         </div>
-        <div class="flex justify-endinline-block text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-teal-500 hover:bg-white mt-4 lg:mt-0">
+        <!-- <div class="flex justify-endinline-block text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-teal-500 hover:bg-white mt-4 lg:mt-0">
             <nuxt-link
             v-if="authenticated"
             to="/index"
@@ -12,7 +12,8 @@
             replace
             >LogOut</nuxt-link
             >
-            </div>
+            </div> -->
+            <button type="button " class="flex justify-endinline-block text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-teal-500 hover:bg-white mt-4 lg:mt-0">LogOut</button>
         <router-view @authenticated="setAuthenticated" />
         </nav>
         <div class="grid grid-cols-3 gap-5 mt-14">
@@ -27,7 +28,7 @@
             </h5>
             </a>
 
-            <div class="flex flex-1 justify-center p-9 text-4xl">{{ plusOne }}</div>
+            <div class="flex flex-1 justify-center p-9 text-4xl">10</div>
 
             <div class="flex flex-1 justify-center">
             <button
@@ -55,7 +56,7 @@
             </h5>
             </a>
 
-            <div class="flex flex-1 justify-center p-9 text-4xl">{{ plusOne }}</div>
+            <div class="flex flex-1 justify-center p-9 text-4xl">10</div>
 
             <div class="flex flex-1 justify-center">
             <button
@@ -83,7 +84,7 @@
             </h5>
             </a>
 
-            <div class="flex flex-1 justify-center p-9 text-4xl">{{ plusOne }}</div>
+            <div class="flex flex-1 justify-center p-9 text-4xl">10</div>
 
             <div class="flex flex-1 justify-center">
             <button
@@ -102,13 +103,26 @@
         </div>
         </div>
 
-        <div
-        class="flex flex-1 justify-center box-border w-80 h-48 border-4 bg-green-500 m4"
-        >
-        <div>
-            <h3>Heloo</h3>
+        <!-- <div class="grid grid-flow-col text-center p-2"> 
+        <div class="shadow-sm w-80 h-24 bg-green-200 
+                    rounded-lg">shadow-sm
+        </div>
+        </div> -->
+    <div class="flex justify-center items-center min-w-0 bg-white">
+        
+        <div class="flex-1 max-w-4xl p-16">
+            <h2 class="text-center p-10 font-bold">Basket Stack</h2>
+            <div class="col-span-2 text-center text-white p-4 pr-6 bg-orange-500 border-1-8 border-teal-400 rounded-md shadow-md space-y-2">
+            Orange
+        </div>
+        <div class="col-span-2 text-center text-white p-4 pr-6 bg-red-500 border-1-8 border-teal-400 rounded-md shadow-md space-y-2">
+            Apple
+        </div>
+        <div class="col-span-2 text-center text-white p-4 pr-6 bg-blue-500 border-1-8 border-teal-400 rounded-md shadow-md space-y-2">
+            Grape
         </div>
         </div>
+    </div>
 
         
     </div>
