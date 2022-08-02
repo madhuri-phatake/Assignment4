@@ -64,10 +64,10 @@ export default{
                 `http://localhost:3000/users?email=${this.name}&password=${this.password}`
             );
             if(result.status==200 && result.data.length>0){
-                this.$router.push({name:"bucket"})
+                this.$router.push({name:"busket"})
             }
             else{
-                alert("please enter correct name and password")
+                alert("please enter incorrect name and password")
             }
             
             }
