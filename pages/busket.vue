@@ -6,10 +6,10 @@
       </div>
       <div>
         <NuxtLink
-                to="/"
-                class="flex justify-endinline-block text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-teal-500 hover:bg-white mt-4 lg:mt-0"
-                >LogOut</NuxtLink>
-                
+          to="/"
+          class="flex justify-endinline-block text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-teal-500 hover:bg-white mt-4 lg:mt-0"
+          >LogOut</NuxtLink
+        >
       </div>
     </nav>
     <div class="">
@@ -28,12 +28,12 @@
           </div>
           <div class="flex flex-1 justify-center">
             <button
-              v-on:click="add"
+              @click="per ? add() : al()"
               class="py-2 px-4 rounded-full h-14 w-14 bg-white text-black mx-1"
             >
               +</button
             ><button
-              v-on:click="remove"
+              @click="per ? remove() : al()"
               class="py-2 px-4 rounded-full h-14 w-14 bg-white text-black mx-1"
             >
               -
@@ -53,12 +53,12 @@
           </div>
           <div class="flex flex-1 justify-center">
             <button
-              @click="add1"
+              @click="per ? add1() : al()"
               class="py-2 px-4 rounded-full h-14 w-14 bg-white text-black mx-1"
             >
               +</button
             ><button
-              v-on:click="remove1"
+              @click="per ? remove1() : al2()"
               class="py-2 px-4 rounded-full h-14 w-14 bg-white text-black mx-1"
             >
               -
@@ -78,12 +78,12 @@
           </div>
           <div class="flex flex-1 justify-center">
             <button
-              v-on:click="add2"
+              @click="per ? add2() : al()"
               class="py-2 px-4 rounded-full h-14 w-14 bg-white text-black mx-1"
             >
               +</button
             ><button
-              v-on:click="remove2"
+              @click="per ? remove2() : al2()"
               class="py-2 px-4 rounded-full h-14 w-14 bg-white text-black mx-1"
             >
               -
@@ -101,16 +101,17 @@
         <div>
           <h3 v-if="show" class="text-center">No Selected items</h3>
           <div v-else>
-            <table class="w-64 items-center justify-center">
-              <tr
-                class="border-solid border-2 border-indigo-600 w-10"
-                v-for="(basket, index) in basket.slice().reverse()"
-                :key="index"
-              >
-                <td>{{ basket }}</td>
-              </tr>
-            </table>
-           
+            <center>
+              <table class="w-64 items-center justify-center">
+                <tr
+                  class="border-solid border-2 border-indigo-600 w-10 text-bold"
+                  v-for="(basket, index) in basket.slice().reverse()"
+                  :key="index"
+                >
+                  <td :class="classe[basket]">{{ basket }}</td>
+                </tr>
+              </table>
+            </center>
           </div>
         </div>
       </div>
@@ -137,17 +138,35 @@ export default {
         color: "",
       },
       basket: [],
+      classe: {
+        Apple: "apple",
+        Orange: "orange",
+        Grapes: "grapes",
+      },
       show: true,
     };
+  },
+  created() {
+    this.per = this.$route.params.per;
+    if (this.per === "all") {
+      this.per = true;
+    } else {
+      this.per = false;
+    }
+    console.warn(this.per);
   },
   methods: {
     add() {
       if (this.apple.count > 0) {
-        this.apple.count = this.apple.count === 0 ? 0 : this.apple.count - 1;
-        this.basket.push(this.apple.name);
+        if (this.apple.count === 0) {
+          this.apple.count = 0;
+        } else {
+          this.apple.count = this.apple.count - 1;
+          this.basket.push(this.apple.name);
+        }
         this.show = false;
       } else {
-        alert("you already aaded 10 item");
+        alert("Sorry!You ran out of Apples");
       }
     },
     remove() {
@@ -193,6 +212,20 @@ export default {
         alert("You have selected invalid item ");
       }
     },
+    al() {
+      alert("Sorry!You dont have access");
+    },
   },
 };
 </script>
+<style scoped>
+.apple {
+  background-color: rgb(239, 68, 68);
+}
+.orange {
+  background-color: rgb(234, 179, 8);
+}
+.grapes {
+  background-color: rgb(30, 64, 175);
+}
+</style>
